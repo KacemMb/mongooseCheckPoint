@@ -1,5 +1,6 @@
 import Person from '../models/person.model.js';
 
+// Create and Save a new Person
 export const create = async(req, res) => {
     console.log(req.body)
     const {name, age} = req.body;
@@ -11,7 +12,7 @@ export const create = async(req, res) => {
         res.status(400).send("person not created");
     }
 }
-
+// Retrieve and return all persons from the database.
 export const getPerson = async(req, res) => {
     try{
         const person = await Person.find();
@@ -20,7 +21,7 @@ export const getPerson = async(req, res) => {
         res.status(400).send("person not found");
     }
 }
-
+// Find a single person with a personId
 export const getPersonById = async(req, res) => {
     const _id = req.params.id;
     try{
@@ -34,7 +35,7 @@ export const getPersonById = async(req, res) => {
         res.status(400).send("person not found");
     }
 }
-
+// Update a person identified by the personId in the request
 export const updatePerson = async(req, res) => {
     const _id = req.params.id;
     const {name, age} = req.body;
@@ -49,7 +50,7 @@ export const updatePerson = async(req, res) => {
         res.status(400).send("person not updated");
     }
 }
-
+// Delete a person with the specified personId in the request
 export const deletePerson = async(req, res) => {
     const _id = req.params.id;
     try{
@@ -63,6 +64,7 @@ export const deletePerson = async(req, res) => {
         res.status(400).send("person not deleted");
     }
 }
+//delete all persons with the specified age
 export const deleteByAge = async(req, res) => {
     const age = req.params.age;
     try{
@@ -76,7 +78,7 @@ export const deleteByAge = async(req, res) => {
         res.status(400).send("person not deleted");
     }
 }
-
+//create many persons
 export const createMany = async(req, res) => {
     const persons = req.body;
     try{
@@ -86,7 +88,7 @@ export const createMany = async(req, res) => {
         res.status(400).send("persons not created");
     }
 }
-
+// Update a person identified by the personId with classic method : find and save
 export const classicUpdate = async(req, res) => {
     const _id = req.params.id;
     const {name, age} = req.body;

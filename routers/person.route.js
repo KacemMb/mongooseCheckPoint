@@ -3,6 +3,8 @@ import { classicUpdate, create, createMany, deleteByAge, deletePerson, getPerson
 
 const router = express.Router();
 
+// create routes 
+
 
 router.post('/test',create);
 router.get('/getPerson',getPerson);
